@@ -13,6 +13,15 @@ export const videoPlayerInit = () => {
 
   videoFullscreen.addEventListener('click', () => {
     videoPlayer.requestFullscreen();
+
+  });
+
+  videoPlayer.addEventListener('fullscreenchange', () => {
+    if (document.fullscreen) {
+      videoPlayer.controls = true;
+    } else {
+      videoPlayer.controls = false;
+    }
   });
 
   const toggleIcon = () => {
@@ -85,5 +94,9 @@ export const videoPlayerInit = () => {
 
   changeValue();
 
+  videoPlayerInit.stop = () => {
+    videoPlayer.pause();
+    toggleIcon();
+  };
 
 };
