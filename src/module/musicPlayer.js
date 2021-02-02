@@ -38,6 +38,7 @@ export const musicPlayerInit = () => {
       trackIndex = playlist.length - 1;
     }
     loadTrack();
+    audioProgressTiming.style.width = 0;
   };
 
   const nextTrack = () => {
@@ -47,6 +48,7 @@ export const musicPlayerInit = () => {
       trackIndex++;
     }
     loadTrack();
+    audioProgressTiming.style.width = 0;
   };
 
   audioNavigation.addEventListener('click', event => {
@@ -105,4 +107,13 @@ export const musicPlayerInit = () => {
     const progress = (x / allWidth) * audioPlayer.duration;
     audioPlayer.currentTime = progress;
   });
+
+  return () => {
+    if (!audioPlayer.paused){
+      audioPlayer.pause();
+      audio.classList.remove('play');
+      audioButtonPlay.classList.remove('fa-pause');
+      audioButtonPlay.classList.add('fa-play');
+    }
+  }
 };

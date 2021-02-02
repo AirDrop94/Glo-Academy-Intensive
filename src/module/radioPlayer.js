@@ -11,8 +11,6 @@ export const radioPlayerInit = () => {
   const audio = new Audio();
   audio.type = 'audio/aac';
 
-  let prevVolume = audio.volume;
-
   radio.disabled = true;
 
   const changeIconPlay = () => {
